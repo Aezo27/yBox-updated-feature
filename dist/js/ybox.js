@@ -187,11 +187,11 @@ function insertPopHtml(self,hasSelf,url,code,title,caption){
 			img.src = url;
 			img.className = 'yBoxImg';
 			img.onload = function(){
-                if (jQuery(".yBoxFrame").find('.caption-wrapper').length < 1) {
-                    if (caption != null) {
-                      jQuery(".yBoxFrame").append(captDiv);
+                if (jQuery('.yBoxFrame').find('.caption-wrapper').length < 1) {
+                    if (caption != '') {
+                      jQuery('.yBoxFrame').append(captDiv);
                     } else {
-                      jQuery(".caption-wrapper").remove();
+                      jQuery('.caption-wrapper').remove();
                     }
                 }
 				var group = self.data('ybox-group');
