@@ -76,7 +76,8 @@ function yBox(json){
 			json.yBoxClass = json.self.data('ybox-class') || '';
 			json.url = json.self.attr('href');
 			json.title = json.self.attr('data-title');
-			json.caption = json.self.attr('data-caption');
+			// json.caption = json.self.attr('data-caption');
+			json.caption = json.self.children().attr('alt');
 		}
 		var html = '<div class="yBoxOverlay no-contrast'+(yLang=='he'?' yBoxRTL':'')+'">\
 						<div class="yBoxFrame '+json.yBoxClass+'">\
@@ -128,9 +129,13 @@ function yBox(json){
 	}
 };
 function insertPopHtml(self,hasSelf,url,code,title,caption){
+    // var captDiv =
+    //     '<div class="caption-wrapper">\
+    //         <h1 class="caption-title">'+title+'</h1>\
+    //         <p>'+caption+'</p>\
+    //     </div>';
     var captDiv =
         '<div class="caption-wrapper">\
-            <h1 class="caption-title">'+title+'</h1>\
             <p>'+caption+'</p>\
         </div>';
 	if(hasSelf){
@@ -182,9 +187,8 @@ function insertPopHtml(self,hasSelf,url,code,title,caption){
 			img.src = url;
 			img.className = 'yBoxImg';
 			img.onload = function(){
-                console.log('img load');
                 if (jQuery(".yBoxFrame").find('.caption-wrapper').length < 1) {
-                    if (title != null) {
+                    if (caption != null) {
                       jQuery(".yBoxFrame").append(captDiv);
                     } else {
                       jQuery(".caption-wrapper").remove();
